@@ -27,6 +27,30 @@ class DefaultController extends Controller
         ));
     }
 
+    public function saveAction()
+    {
+        $game = $this->get('app.model.game')->getGame();
+
+        $this->get('app.model.game')->storeGame('saved');
+
+        return $this->render(
+            'AppBundle:Default:play.html.twig', array(
+            'grid' => $game->getBoard()->getGrid(),
+            'currentPlayer' => $game->getCurrentPlayer(),
+        ));
+    }
+
+    public function restoreAction(){
+        $game = $this->get('app.model.game')->loadGame('saved');
+        $this->get('app.model.game')->setGame($game);
+        return $this->render(
+            'AppBundle:Default:play.html.twig', array(
+            'grid' => $game->getBoard()->getGrid(),
+            'currentPlayer' => $game->getCurrentPlayer(),
+        ));
+
+    }
+
     public function playAction($row, $col)
     {
         $messages = array();

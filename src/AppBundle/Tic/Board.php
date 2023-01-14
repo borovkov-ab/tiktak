@@ -29,9 +29,9 @@ class Board
     private function initGrid()
     {
         $this->grid = array(
-            array(),
-            array(),
-            array(),
+            array(3),
+            array(3),
+            array(3),
         );
     }
 

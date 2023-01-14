@@ -48,18 +48,18 @@ class GameModel
         $this->storeGame();
     }
 
-    private function loadGame()
+    public function loadGame($name='game')
     {
-        $json = $this->session->get('game', $this->emptyGameJson());
+        $json = $this->session->get($name, $this->emptyGameJson());
         $game = new Game();
         $game->unserialize($json);
         $this->game = $game;
         return $this->game;
     }
 
-    private function storeGame()
+    public function storeGame($name='game')
     {
-        $this->session->set('game', $this->game->serialize());
+        $this->session->set($name, $this->game->serialize());
     }
 
     private function emptyGameJson()
