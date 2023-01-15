@@ -144,7 +144,7 @@ class Board
             return false;
         }
         for($i = 1; $i >= 0; $i--) {
-            if($square != $this->getSquare($i, $i)) {
+            if($square != $this->getSquare($i, 2-$i)) {
                 return false;
             }
         }
